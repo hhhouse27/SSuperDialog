@@ -1,3 +1,18 @@
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.hhhouse27:SSuperDialog:1.0.1'
+	} 
+
+/************************************************************************************************/
  new SSuperDialog.Builder(this, SSuperDialog.TYPE_CENTER)
                 .setTitleAndColor("这是标题", Color.GREEN)
                 .setContent("这个对话框可设置文本、文本颜色、按钮点击事件、弹出动画")
