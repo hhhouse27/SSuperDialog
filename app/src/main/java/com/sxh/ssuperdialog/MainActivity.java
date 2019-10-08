@@ -6,10 +6,17 @@ import androidx.core.content.ContextCompat;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.Toast;
 
 import com.sxh.library.SSuperDialog;
+import com.sxh.library.SingleBtnDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +41,37 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(MainActivity.this, "点击事件自定义，对话框关闭固定执行002", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        Toast.makeText(MainActivity.this, "对话框关闭了！！！", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build().show();
+    }
+
+    public void showDialog02(View view) {
+
+        SpannableString spannableString = new SpannableString("如何获得淘宝订单号？点击查看");
+        //设置颜色
+        spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FC6565")), 10, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+        new SingleBtnDialog.Builder(this)
+                .setTitleAndColor("这是标题", Color.GREEN)
+                .setContentALL(spannableString, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "您点击了查看！" , Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setShowETV(true,"请输入文本...")
+                .setSureBtn("立即抽奖", Color.WHITE, new SingleBtnDialog.SureBtnClick(true) {
+                    @Override
+                    public void onClick(View v, String editTextStr) {
+                        Toast.makeText(MainActivity.this, "您输入的内容是：" + editTextStr, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setDismissListener(new DialogInterface.OnDismissListener() {
