@@ -6,4 +6,7 @@
     <color name="transparent">#00000000</color>
     <color name="transparent_22">#22000000</color>
     <color name="line_blue">#15B6FF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
 </resources>
