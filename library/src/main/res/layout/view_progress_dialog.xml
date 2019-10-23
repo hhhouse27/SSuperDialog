@@ -12,13 +12,13 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="15dp"
-        app:normalColor="#cccccc"
-        app:progress="60"
-        app:progressColor="#03A9F4"
-        app:progressStyle="STROKE"
-        app:strokeWidth="10"
-        app:textColor="#ffffff"
-        app:textSize="15sp" />
+        app:circle_normal_color="#cccccc"
+        app:circle_progress="60"
+        app:circle_progress_color="#03A9F4"
+        app:circle_progress_style="STROKE"
+        app:circle_stroke_width="10"
+        app:circle_text_color="#ffffff"
+        app:circle_text_size="15sp" />
 
     <TextView
         android:id="@+id/tv_content"

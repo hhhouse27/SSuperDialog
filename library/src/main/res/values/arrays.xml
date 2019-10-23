@@ -8,21 +8,21 @@
     </declare-styleable>
     <declare-styleable name="CircleProgressBar">
         <!--文字大小-->
-        <attr name="textSize" format="dimension"/>
+        <attr name="circle_text_size" format="dimension"/>
         <!--文字颜色-->
-        <attr name="textColor" format="color"/>
+        <attr name="circle_text_color" format="color"/>
         <!--文本-->
-        <attr name="text" format="string"/>
+        <attr name="circle_text" format="string"/>
         <!--变宽宽度-->
-        <attr name="strokeWidth" format="integer"/>
+        <attr name="circle_stroke_width" format="integer"/>
         <!--未走的进度的颜色-->
-        <attr name="normalColor" format="color"/>
+        <attr name="circle_normal_color" format="color"/>
         <!--已走的进度的颜色-->
-        <attr name="progressColor" format="color"/>
+        <attr name="circle_progress_color" format="color"/>
         <!--已走的进度 0-360 -->
-        <attr name="progress" format="integer"/>
+        <attr name="circle_progress" format="integer"/>
         <!--类型 填充型，还是环形-->
-        <attr name="progressStyle" format="enum">
+        <attr name="circle_progress_style" format="enum">
             <enum name="STROKE" value="0"/>
             <enum name="FILL" value="1"/>
         </attr>
