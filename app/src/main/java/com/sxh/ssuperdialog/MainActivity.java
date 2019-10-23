@@ -8,13 +8,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sxh.library.ProgressDialog;
 import com.sxh.library.SSuperDialog;
 import com.sxh.library.SingleBtnDialog;
 
@@ -64,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 .setContentALL(spannableString, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "您点击了查看！" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "您点击了查看！", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setShowETV(true,"请输入文本...")
+                .setShowETV(true, "请输入文本...")
                 .setSureBtn("立即抽奖", Color.WHITE, new SingleBtnDialog.SureBtnClick(true) {
                     @Override
                     public void onClick(View v, String editTextStr) {
@@ -81,5 +79,45 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .build().show();
+    }
+
+    public void showDialog03(View view) throws Exception {
+        final ProgressDialog dialog = new ProgressDialog.Builder(this)
+                .setContent("正在下载视频...")
+                .setMainColor(Color.parseColor("#FF0000"))
+                .setDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        Toast.makeText(MainActivity.this, "下载完成！", Toast.LENGTH_SHORT).show();
+                    }
+                }).build();
+        dialog.show();
+       new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int progress = 0;//0-360
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                        progress++;
+                        final int finalProgress = progress;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialog.downloadProcess(finalProgress);
+                            }
+                        });
+                        if (progress == 100) {
+                            dialog.dismiss();
+                            break;
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+
     }
 }
