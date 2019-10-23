@@ -42,14 +42,14 @@ public class CircleProgressBar extends View {
     {
         super(context, attrs, defStyleAttr);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressBar);
-        textSize = array.getDimension(R.styleable.CircleProgressBar_text_size,textSize);
-        textColor = array.getColor(R.styleable.CircleProgressBar_text_color,textColor);
+        textSize = array.getDimension(R.styleable.CircleProgressBar_textSize,textSize);
+        textColor = array.getColor(R.styleable.CircleProgressBar_textColor,textColor);
         centerText = array.getString(R.styleable.CircleProgressBar_text)==null?centerText:array.getString(R.styleable.CircleProgressBar_text);
-        strokeWidth = array.getInteger(R.styleable.CircleProgressBar_stroke_width,strokeWidth);
-        normalColor = array.getColor(R.styleable.CircleProgressBar_normal_color,normalColor);
-        progressColor = array.getColor(R.styleable.CircleProgressBar_progress_color,progressColor);
+        strokeWidth = array.getInteger(R.styleable.CircleProgressBar_strokeWidth,strokeWidth);
+        normalColor = array.getColor(R.styleable.CircleProgressBar_normalColor,normalColor);
+        progressColor = array.getColor(R.styleable.CircleProgressBar_progressColor,progressColor);
         progress = array.getInt(R.styleable.CircleProgressBar_progress,progress);
-        progress_style = array.getInt(R.styleable.CircleProgressBar_progress_style,0)==0?Paint.Style.STROKE:Paint.Style.FILL;
+        progress_style = array.getInt(R.styleable.CircleProgressBar_progressStyle,0)==0?Paint.Style.STROKE:Paint.Style.FILL;
 
         array.recycle();
         initPaint();
