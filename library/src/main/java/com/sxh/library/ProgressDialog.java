@@ -37,6 +37,8 @@ public class ProgressDialog extends BaseSSDialog {
 
         mDialog = new Dialog(mBuilder.mContext, R.style.myDialog2);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.setCanceledOnTouchOutside(false); // 设置是否禁止按空白区域取消
+        mDialog.setCancelable(false); // 设置是否禁止返回键取消
         mDialog.setContentView(view);
         mDialog.setOnDismissListener(mBuilder.mDismissListener);
     }
