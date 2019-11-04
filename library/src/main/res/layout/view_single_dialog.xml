@@ -12,7 +12,7 @@
         android:background="@drawable/shape_dialog_circle_bg"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="20dp"
         android:layout_height="wrap_content">
 
         <TextView
