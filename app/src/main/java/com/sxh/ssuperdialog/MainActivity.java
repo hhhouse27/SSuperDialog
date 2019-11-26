@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import com.sxh.library.CustomViewDialog;
 import com.sxh.library.ProgressDialog;
 import com.sxh.library.SSuperDialog;
 import com.sxh.library.SingleBtnDialog;
@@ -119,5 +121,25 @@ public class MainActivity extends AppCompatActivity {
         }).start();
 
 
+    }
+
+    public void showDialog04(View view) throws Exception {
+        View view1 = LayoutInflater.from(this).inflate(R.layout.view_custom,null);
+        new CustomViewDialog.Builder(this)
+                .setCustomView(view1)
+                .setTitleAndColor("检测到商品", Color.GREEN)
+                .setDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        Toast.makeText(MainActivity.this, "对话框关闭了！！！", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setSureBtn("查看商品", Color.WHITE, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "跳转至商品详情页" , Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build().show();
     }
 }

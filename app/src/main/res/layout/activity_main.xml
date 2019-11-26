@@ -37,6 +37,14 @@
         android:layout_height="wrap_content"
         android:text="点击下载"
         android:id="@+id/button4"/>
+    <Button
+        android:layout_below="@+id/button2"
+        android:layout_width="wrap_content"
+        android:onClick="showDialog04"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/button4"
+        android:text="检测商品"
+        android:id="@+id/button5"/>
 
     <SeekBar
         android:id="@+id/seekBar"
