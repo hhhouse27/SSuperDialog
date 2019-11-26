@@ -19,5 +19,8 @@ public abstract class BaseSSDialog {
         }
     }
 
+    public boolean isShowing(){
+        return mDialog.isShowing();
+    }
     public abstract void intiDialog();
 }
