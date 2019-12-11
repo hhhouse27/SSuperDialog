@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -86,6 +87,21 @@ public class SSuperDialog {
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setContentView(view);
         mDialog.setOnDismissListener(mBuilder.mDismissListener);
+        // 设置是否可以取消
+        mDialog.setCanceledOnTouchOutside(mBuilder.mCancelable); // 设置是否禁止按空白区域取消
+        mDialog.setCancelable(mBuilder.mCancelable); // 设置是否禁止返回键取消
+        if (!mBuilder.mCancelable) {
+            mDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK) {
+                        return true; // 禁止搜索键取消
+                    } else {
+                        return false; // 默认返回 false
+                    }
+                }
+            });
+        }
 
     }
 
@@ -102,13 +118,25 @@ public class SSuperDialog {
     }
 
 
-    public static class Builder {
+    public static class Builder  extends BaseBuilder{
 
-        private Context mContext;
+
         private int mStyle;
 
         public Builder(Context context, int style) {
-            mContext = context;
+            super(context, false);
+            mStyle = style;
+        }
+        public Builder(Context context) {
+            super(context, false);
+            mStyle = TYPE_CENTER;
+        }
+        public Builder(Context context, boolean cancelable) {
+            super(context, cancelable);
+            mStyle = TYPE_CENTER;
+        }
+        public Builder(Context context, boolean cancelable, int style) {
+            super(context, cancelable);
             mStyle = style;
         }
 

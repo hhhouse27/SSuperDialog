@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -41,6 +42,21 @@ public class ProgressDialog extends BaseSSDialog {
         mDialog.setCancelable(false); // 设置是否禁止返回键取消
         mDialog.setContentView(view);
         mDialog.setOnDismissListener(mBuilder.mDismissListener);
+        // 设置是否可以取消
+        mDialog.setCanceledOnTouchOutside(mBuilder.mCancelable); // 设置是否禁止按空白区域取消
+        mDialog.setCancelable(mBuilder.mCancelable); // 设置是否禁止返回键取消
+        if (!mBuilder.mCancelable) {
+            mDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                    if (keyCode == KeyEvent.KEYCODE_SEARCH || keyCode == KeyEvent.KEYCODE_BACK) {
+                        return true; // 禁止搜索键取消
+                    } else {
+                        return false; // 默认返回 false
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -59,16 +75,18 @@ public class ProgressDialog extends BaseSSDialog {
         mProgressBar.update(progress, percent + "%");
     }
 
-    public static class Builder {
+    public static class Builder  extends BaseBuilder{
 
-        private Context mContext;
         private String mContent;
         private int mProgressColor = Color.parseColor("#03A9F4");
 
         private DialogInterface.OnDismissListener mDismissListener;
 
         public Builder(Context context) {
-            mContext = context;
+            super(context, false);
+        }
+        public Builder(Context context, boolean cancelable) {
+            super(context, cancelable);
         }
 
         public Builder setContent(String content) {

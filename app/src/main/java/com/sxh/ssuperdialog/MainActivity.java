@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FC6565")), 10, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 
-        new SingleBtnDialog.Builder(this)
+        new SingleBtnDialog.Builder(this, true)
                 .setTitleAndColor("这是标题", Color.GREEN)
                 .setContentALL(spannableString, new View.OnClickListener() {
                     @Override
