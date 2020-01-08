@@ -58,6 +58,7 @@ public class CustomViewDialog extends BaseSSDialog {
             });
             dialog_buttom1.setText(mBuilder.btnText);
             dialog_buttom1.setTextColor(mBuilder.btnColor);
+            dialog_buttom1.setBackgroungColor(mBuilder.btnBgcolor);
         }
 
         img_close.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +100,7 @@ public class CustomViewDialog extends BaseSSDialog {
 
         private String mTitle;
         private int titleColor;
+        private int btnBgcolor = Color.RED;
 
         public Builder setTitle(String title) {
             mTitle = title;
@@ -127,6 +129,11 @@ public class CustomViewDialog extends BaseSSDialog {
             this.btnText = btnText;
             this.btnColor = btnColor;
             this.btnClick = btnClick;
+            return this;
+        }
+
+        public Builder setSureBtnBg(int bgColor){
+            this.btnBgcolor = bgColor;
             return this;
         }
 

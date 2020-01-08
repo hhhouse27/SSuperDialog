@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .setShowETV(true, "请输入文本...")
+                .setSureBtnBg(Color.GRAY)
                 .setSureBtn("立即抽奖", Color.WHITE, new SingleBtnDialog.SureBtnClick(true) {
                     @Override
                     public void onClick(View v, String editTextStr) {
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "对话框关闭了！！！", Toast.LENGTH_SHORT).show();
                     }
                 })
+                .setSureBtnBg(Color.GRAY)
                 .setSureBtn("查看商品", Color.WHITE, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
