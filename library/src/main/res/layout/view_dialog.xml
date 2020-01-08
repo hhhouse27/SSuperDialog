@@ -14,7 +14,7 @@
         android:layout_marginTop="15dp"
         android:textColor="@color/gray_33"
         android:text="标题"
-        android:textSize="17sp" />
+        android:textSize="17dp" />
 
     <TextView
         android:id="@+id/tv_dialog_content"
@@ -24,7 +24,7 @@
         android:layout_margin="15dp"
         android:textColor="@color/gray_66"
         android:text="描描述描述描述描述描述描述描述描述描述述"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <View
         android:layout_width="fill_parent"
@@ -44,7 +44,7 @@
             android:background="@drawable/selector_transparent_bg"
             android:gravity="center"
             android:textColor="@color/line_blue"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
 
         <View
             android:id="@+id/line_dialog_control"
@@ -60,7 +60,7 @@
             android:background="@drawable/selector_transparent_bg"
             android:gravity="center"
             android:textColor="@color/gray_66"
-            android:textSize="15sp" />
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

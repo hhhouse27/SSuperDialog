@@ -100,7 +100,7 @@ public class CustomViewDialog extends BaseSSDialog {
 
         private String mTitle;
         private int titleColor;
-        private int btnBgcolor = Color.RED;
+        private int btnBgcolor = Color.parseColor("#FC6565");
 
         public Builder setTitle(String title) {
             mTitle = title;
