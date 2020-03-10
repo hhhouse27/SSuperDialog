@@ -34,6 +34,7 @@ public class CustomViewDialog extends BaseSSDialog {
         FrameLayout fl_custom =  view.findViewById(R.id.fl_custom);
         RoundTextView dialog_buttom1 = view.findViewById(R.id.btn_sure);
         ImageView img_close = view.findViewById(R.id.img_close);
+        RoundTextView dialog_buttom2 = view.findViewById(R.id.btn_cancel);
 
         tv_title.setText(TextUtils.isEmpty(mBuilder.mTitle) ? "提示" : mBuilder.mTitle);
         tv_title.setTextColor(mBuilder.titleColor);
@@ -41,6 +42,7 @@ public class CustomViewDialog extends BaseSSDialog {
         fl_custom.removeAllViews();
         fl_custom.addView(mBuilder.customView);
 
+        //确定按钮
         if (TextUtils.isEmpty(mBuilder.btnText)) {
             dialog_buttom1.setVisibility(View.GONE);
         } else {
@@ -60,6 +62,26 @@ public class CustomViewDialog extends BaseSSDialog {
             dialog_buttom1.setTextColor(mBuilder.btnColor);
             dialog_buttom1.setBackgroungColor(mBuilder.btnBgcolor);
         }
+        //取消按钮
+        if (TextUtils.isEmpty(mBuilder.btn2Text)) {
+            dialog_buttom2.setVisibility(View.GONE);
+        } else {
+            dialog_buttom2.setVisibility(View.VISIBLE);
+            dialog_buttom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mBuilder.btn2Click != null) {
+                        mBuilder.btn2Click.onClick(v);
+
+                    } else {
+                        dismiss();
+                    }
+                }
+            });
+            dialog_buttom2.setText(mBuilder.btn2Text);
+            dialog_buttom2.setTextColor(mBuilder.btn2Color);
+            dialog_buttom2.setBackgroungColor(mBuilder.btn2Bgcolor);
+        }
 
         img_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +89,8 @@ public class CustomViewDialog extends BaseSSDialog {
                 dismiss();
             }
         });
+
+        //
 
         mDialog = new Dialog(mBuilder.mContext, R.style.myDialog2);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -143,6 +167,32 @@ public class CustomViewDialog extends BaseSSDialog {
             mDismissListener = dismissListener;
             return this;
         }
+
+        //取消按钮
+        private String btn2Text;
+        private int btn2Color;
+        private View.OnClickListener btn2Click;
+        private int btn2Bgcolor = Color.parseColor("#aaaaaa");
+
+        public Builder setSureBtn2(String btnText, int btnColor, View.OnClickListener btnClick) {
+            this.btn2Text = btnText;
+            this.btn2Color = btnColor;
+            this.btn2Click = btnClick;
+            return this;
+        }
+
+        public Builder setSureBtnBg2(int bgColor){
+            this.btn2Bgcolor = bgColor;
+            return this;
+        }
+
+        private DialogInterface.OnDismissListener mDismissListener2;
+
+        public Builder setDismissListener2(DialogInterface.OnDismissListener dismissListener) {
+            mDismissListener2 = dismissListener;
+            return this;
+        }
+        //
 
         public CustomViewDialog build() {
             return  new CustomViewDialog(this);

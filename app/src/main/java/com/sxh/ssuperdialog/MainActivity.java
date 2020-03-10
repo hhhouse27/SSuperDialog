@@ -142,6 +142,13 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "跳转至商品详情页" , Toast.LENGTH_SHORT).show();
                     }
                 })
+                .setSureBtnBg2(Color.parseColor("#aaaaaa"))
+                .setSureBtn2("取消", Color.parseColor("#ffffff"), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "点击了取消!!!", Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .build().show();
     }
 }

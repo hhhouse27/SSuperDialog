@@ -42,6 +42,19 @@
             app:rtvRadius="6dp"
             app:rtvBgColor="#FC6565"/>
 
+        <com.sxh.library.widge.RoundTextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:text="取消"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            app:rtvRadius="6dp"
+            app:rtvBgColor="#bbbbbb"
+            />
+
     </LinearLayout>
     <ImageView
         android:id="@+id/img_close"
