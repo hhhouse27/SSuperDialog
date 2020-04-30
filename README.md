@@ -14,6 +14,7 @@ Step 2. Add the dependency
 
 
 方法一
+<pre>
 new SSuperDialog.Builder(this, SSuperDialog.TYPE_CENTER)
                 .setTitleAndColor("这是标题", Color.GREEN)
                 .setContent("这个对话框可设置文本、文本颜色、按钮点击事件、弹出动画")
@@ -36,8 +37,10 @@ new SSuperDialog.Builder(this, SSuperDialog.TYPE_CENTER)
                     }
                 })
                 .build().show();
-		
+</pre>
+
 方法二
+<pre>
 SpannableString spannableString = new SpannableString("如何获得淘宝订单号？点击查看");
         //设置颜色
         spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FC6565")), 10, 14, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -65,8 +68,10 @@ SpannableString spannableString = new SpannableString("如何获得淘宝订单�
                     }
                 })
                 .build().show();
-		
+</pre>
+
 方法三
+<pre>
 final ProgressDialog dialog = new ProgressDialog.Builder(this)
                 .setContent("正在下载视频...")
                 .setMainColor(Color.parseColor("#FF0000"))
@@ -102,8 +107,10 @@ final ProgressDialog dialog = new ProgressDialog.Builder(this)
                 }
             }
         }).start();
-	
+</pre>
+
 方法四
+<pre>
 View view1 = LayoutInflater.from(this).inflate(R.layout.view_custom,null);
         new CustomViewDialog.Builder(this)
                 .setCustomView(view1)
@@ -129,6 +136,7 @@ View view1 = LayoutInflater.from(this).inflate(R.layout.view_custom,null);
                     }
                 })
                 .build().show();
+</pre>
 		
 		
 		
